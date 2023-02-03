@@ -1,6 +1,30 @@
-import { MainContainer, ScrollBox, Title } from './index.style';
+import { useEffect, useRef, useState } from 'react';
+import { MainContainer, MousePointer, ScrollBox, Title } from './index.style';
 
 export default function Home() {
+  const [mousePosition, setMousePosition] = useState({ left: -100, top: -100 });
+  const throttle = useRef<boolean>(false);
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [mousePosition]);
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (throttle.current) return;
+    else {
+      throttle.current = true;
+      const timer = setTimeout(() => {
+        setMousePosition({ left: e.clientX, top: e.clientY });
+        throttle.current = false;
+        clearTimeout(timer);
+      }, 20);
+    }
+  };
+
   return (
     <MainContainer>
       <div className="line top" />
@@ -13,6 +37,7 @@ export default function Home() {
         <div className="icon" />
         <p className="text">scroll down</p>
       </ScrollBox>
+      <MousePointer left={mousePosition.left} top={mousePosition.top} />
     </MainContainer>
   );
 }
