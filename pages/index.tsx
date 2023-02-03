@@ -1,4 +1,4 @@
-import { MainContainer, Title } from './index.style';
+import { MainContainer, ScrollBox, Title } from './index.style';
 
 export default function Home() {
   return (
@@ -9,6 +9,10 @@ export default function Home() {
         <h1 className="portfolio">Portfolio</h1>
       </Title>
       <div className="line bottom" />
+      <ScrollBox>
+        <div className="icon" />
+        <p className="text">scroll down</p>
+      </ScrollBox>
     </MainContainer>
   );
 }
