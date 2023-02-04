@@ -1,8 +1,13 @@
+import Header from '@/components/header';
+import { MODE } from '@/constant/display-mode';
+import { SIDE_MENU } from '@/constant/sidebar-menu';
 import { useEffect, useRef, useState } from 'react';
 import { MainContainer, MousePointer, ScrollBox, Title } from './index.style';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ left: -100, top: -100 });
+  const [isToggle, setIsToggle] = useState<boolean>(false);
+
   const throttle = useRef<boolean>(false);
 
   useEffect(() => {
@@ -26,18 +31,26 @@ export default function Home() {
   };
 
   return (
-    <MainContainer>
-      <MousePointer left={mousePosition.left} top={mousePosition.top} />
-      <div className="line top" />
-      <Title>
-        <h1 className="name">Hyojeong</h1>
-        <h1 className="portfolio">Portfolio</h1>
-      </Title>
-      <div className="line bottom" />
-      <ScrollBox>
-        <div className="icon" />
-        <p className="text">scroll down</p>
-      </ScrollBox>
-    </MainContainer>
+    <>
+      <Header
+        isToggle={isToggle}
+        handleToggle={() => setIsToggle(!isToggle)}
+        mode={MODE.DARK}
+        selectedMenu={SIDE_MENU.MAIN}
+      />
+      <MainContainer>
+        <MousePointer left={mousePosition.left} top={mousePosition.top} />
+        <div className="line top" />
+        <Title>
+          <h1 className="name">Hyojeong</h1>
+          <h1 className="portfolio">Portfolio</h1>
+        </Title>
+        <div className="line bottom" />
+        <ScrollBox>
+          <div className="icon" />
+          <p className="text">scroll down</p>
+        </ScrollBox>
+      </MainContainer>
+    </>
   );
 }
