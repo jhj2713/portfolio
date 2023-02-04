@@ -24,10 +24,10 @@ export const MainContainer = styled.main`
 
     @keyframes transform-top {
       0% {
-        transform: translateY(0);
+        transform: translateY(-4rem);
       }
       100% {
-        transform: translateY(-12rem);
+        transform: translateY(-16rem);
       }
     }
   }
@@ -37,10 +37,10 @@ export const MainContainer = styled.main`
 
     @keyframes transform-bottom {
       0% {
-        transform: translateY(0);
+        transform: translateY(-4rem);
       }
       100% {
-        transform: translateY(12rem);
+        transform: translateY(8rem);
       }
     }
   }
@@ -48,9 +48,11 @@ export const MainContainer = styled.main`
   @keyframes line-opening {
     0% {
       width: 0;
+      transform: translateY(-4rem);
     }
     100% {
       width: 50rem;
+      transform: translateY(-4rem);
     }
   }
 `;
@@ -74,16 +76,18 @@ export const Title = styled.div`
     opacity: 0;
     animation: transform-title 1.5s 1.5s ease-in-out forwards;
 
+    text-align: center;
+
     @keyframes transform-title {
       0% {
         opacity: 1;
         clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
-        transform: translateY(6rem);
+        transform: translateY(2rem);
       }
       100% {
         opacity: 1;
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-        transform: translateY(0);
+        transform: translateY(-4rem);
       }
     }
   }
@@ -92,16 +96,18 @@ export const Title = styled.div`
     opacity: 0;
     animation: transform-portfolio 1.5s 1.5s ease-in-out forwards;
 
+    text-align: center;
+
     @keyframes transform-portfolio {
       0% {
         opacity: 1;
         clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
-        transform: translateY(-6rem);
+        transform: translateY(-10rem);
       }
       100% {
         opacity: 1;
         clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
-        transform: translateY(0);
+        transform: translateY(-4rem);
       }
     }
   }
