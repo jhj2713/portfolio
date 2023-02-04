@@ -1,9 +1,23 @@
-import { Hamburger, Container, Menu } from './index.style';
+import { useState } from 'react';
+import { Hamburger, Container, SideMenu, Menu } from './index.style';
 import { IHeader } from './index.type';
 
 const sideMenu = ['Introduce', 'Skills', 'Projects', 'Experiences', 'Contact'];
 
-export default function Header({ isToggle, handleToggle, mode, selectedMenu }: IHeader) {
+export default function Header({ isToggle, setIsToggle, mode, selectedMenu }: IHeader) {
+  const [isFadeout, setIsFadeout] = useState<boolean>(false);
+
+  const handleToggle = () => {
+    if (isToggle) {
+      setIsFadeout(true);
+      const timer = setTimeout(() => {
+        setIsFadeout(false);
+        clearTimeout(timer);
+      }, 500);
+    }
+    setIsToggle(!isToggle);
+  };
+
   return (
     <Container mode={mode}>
       <div className="header">
@@ -14,14 +28,14 @@ export default function Header({ isToggle, handleToggle, mode, selectedMenu }: I
           <div className="hamburger-bar-3" />
         </Hamburger>
       </div>
-      {isToggle ? (
-        <div className="menu">
+      {isToggle || isFadeout ? (
+        <SideMenu mode={mode} isFadeout={isFadeout}>
           {sideMenu.map((menu, idx) => (
-            <Menu key={idx} isSelected={idx + 1 === selectedMenu}>
+            <Menu key={idx} isSelected={idx + 1 === selectedMenu} mode={mode}>
               {menu}
             </Menu>
           ))}
-        </div>
+        </SideMenu>
       ) : null}
     </Container>
   );

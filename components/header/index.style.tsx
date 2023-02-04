@@ -25,27 +25,6 @@ export const Container = styled.div<{ mode: IMode }>`
       color: ${({ theme, mode }) => (mode === MODE.DARK ? theme.gray1 : theme.gray9)};
     }
   }
-
-  .menu {
-    position: fixed;
-    top: 0;
-
-    width: 100%;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    z-index: 5;
-
-    background: url('/image/background-dark.png');
-
-    h1 + h1 {
-      margin-top: 4rem;
-    }
-  }
 `;
 
 export const Hamburger = styled.div<{ isToggle: boolean; mode: IMode }>`
@@ -78,11 +57,56 @@ export const Hamburger = styled.div<{ isToggle: boolean; mode: IMode }>`
   }
 `;
 
-export const Menu = styled.h1<{ isSelected: boolean }>`
+export const SideMenu = styled.div<{ mode: IMode; isFadeout: boolean }>`
+  position: fixed;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 5;
+
+  background: ${({ mode }) => `url('/image/background-${mode === MODE.DARK ? 'dark' : 'light'}.png')`};
+
+  animation: ${({ isFadeout }) => (isFadeout ? 'menu-opening 0.5s, menu-closing 0.5s' : 'menu-opening 0.5s')};
+
+  h1 + h1 {
+    margin-top: 4rem;
+  }
+
+  @keyframes menu-opening {
+    0% {
+      opacity: 0;
+      pointer-events: none;
+    }
+    100% {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  @keyframes menu-closing {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+`;
+
+export const Menu = styled.h1<{ isSelected: boolean; mode: IMode }>`
   font-size: 6.4rem;
   font-weight: 800;
 
-  color: ${({ theme, isSelected }) => (isSelected ? theme.primary : theme.gray1)};
+  color: ${({ theme, isSelected, mode }) =>
+    isSelected ? theme.primary : mode === MODE.DARK ? theme.gray1 : theme.gray8};
 
   cursor: pointer;
 

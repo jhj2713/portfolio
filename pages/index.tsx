@@ -32,12 +32,7 @@ export default function Home() {
 
   return (
     <>
-      <Header
-        isToggle={isToggle}
-        handleToggle={() => setIsToggle(!isToggle)}
-        mode={MODE.DARK}
-        selectedMenu={SIDE_MENU.MAIN}
-      />
+      <Header isToggle={isToggle} setIsToggle={setIsToggle} mode={MODE.DARK} selectedMenu={SIDE_MENU.MAIN} />
       <MainContainer>
         <MousePointer left={mousePosition.left} top={mousePosition.top} />
         <div className="line top" />
