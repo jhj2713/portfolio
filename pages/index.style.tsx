@@ -45,6 +45,12 @@ export const MainContainer = styled.main`
     }
   }
 
+  @media (max-width: 480px) {
+    .line {
+      width: 30rem;
+    }
+  }
+
   @keyframes line-opening {
     0% {
       width: 0;
@@ -109,6 +115,13 @@ export const Title = styled.div`
         clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
         transform: translateY(-4rem);
       }
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 4.8rem;
+      letter-spacing: 0.4rem;
     }
   }
 `;
@@ -262,4 +275,8 @@ export const MousePointer = styled.div<{ left: number; top: number }>`
   border-radius: 50%;
 
   background-color: ${({ theme }) => theme.primary};
+
+  @media (max-width: 820px) {
+    display: none;
+  }
 `;

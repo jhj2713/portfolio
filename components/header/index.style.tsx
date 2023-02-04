@@ -79,6 +79,12 @@ export const SideMenu = styled.div<{ mode: IMode; isFadeout: boolean }>`
     margin-top: 4rem;
   }
 
+  @media (max-width: 480px) {
+    h1 + h1 {
+      margin-top: 3.6rem;
+    }
+  }
+
   @keyframes menu-opening {
     0% {
       opacity: 0;
@@ -111,4 +117,8 @@ export const Menu = styled.h1<{ isSelected: boolean; mode: IMode }>`
   cursor: pointer;
 
   border-bottom: 0.2rem solid ${({ isSelected, theme }) => (isSelected ? theme.primary : 'transparent')};
+
+  @media (max-width: 480px) {
+    font-size: 4.6rem;
+  }
 `;
