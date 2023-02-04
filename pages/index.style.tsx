@@ -121,6 +121,17 @@ export const ScrollBox = styled.div`
   flex-direction: column;
   align-items: center;
 
+  opacity: 0;
+
+  animation: scroll-opening 1s forwards;
+  animation-delay: 3.5s;
+
+  @keyframes scroll-opening {
+    100% {
+      opacity: 1;
+    }
+  }
+
   .icon {
     width: 4rem;
     height: 6.4rem;

@@ -27,6 +27,7 @@ export default function Home() {
 
   return (
     <MainContainer>
+      <MousePointer left={mousePosition.left} top={mousePosition.top} />
       <div className="line top" />
       <Title>
         <h1 className="name">Hyojeong</h1>
@@ -37,7 +38,6 @@ export default function Home() {
         <div className="icon" />
         <p className="text">scroll down</p>
       </ScrollBox>
-      <MousePointer left={mousePosition.left} top={mousePosition.top} />
     </MainContainer>
   );
 }
