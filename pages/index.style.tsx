@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const MainContainer = styled.main`
+  position: fixed;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +12,8 @@ export const MainContainer = styled.main`
   height: 100vh;
 
   background: url('/image/background-dark.png');
+  background-size: cover;
+  background-repeat: repeat;
 
   .line {
     width: 50rem;

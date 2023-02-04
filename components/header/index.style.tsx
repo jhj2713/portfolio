@@ -25,6 +25,12 @@ export const Container = styled.div<{ mode: IMode }>`
       color: ${({ theme, mode }) => (mode === MODE.DARK ? theme.gray1 : theme.gray9)};
     }
   }
+
+  @media (max-width: 480px) {
+    .header {
+      height: 8.4rem;
+    }
+  }
 `;
 
 export const Hamburger = styled.div<{ isToggle: boolean; mode: IMode }>`
@@ -72,6 +78,8 @@ export const SideMenu = styled.div<{ mode: IMode; isFadeout: boolean }>`
   z-index: 5;
 
   background: ${({ mode }) => `url('/image/background-${mode === MODE.DARK ? 'dark' : 'light'}.png')`};
+  background-size: cover;
+  background-repeat: repeat;
 
   animation: ${({ isFadeout }) => (isFadeout ? 'menu-opening 0.5s, menu-closing 0.5s' : 'menu-opening 0.5s')};
 
