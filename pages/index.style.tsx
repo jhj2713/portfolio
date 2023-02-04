@@ -70,15 +70,32 @@ export const MainContainer = styled.main`
 export const Title = styled.div`
   position: absolute;
 
-  h1 {
+  div {
     font-size: 6.4rem;
     font-weight: 900;
     letter-spacing: 0.6rem;
 
     color: ${({ theme }) => theme.gray1};
 
-    + h1 {
-      margin-top: 0.4rem;
+    h1 {
+      display: inline-block;
+    }
+  }
+
+  h1:hover {
+    animation: hover-animation 1s ease-in-out;
+
+    @keyframes hover-animation {
+      0% {
+        color: ${({ theme }) => theme.gray1};
+      }
+      50% {
+        color: ${({ theme }) => theme.primary};
+        transform: translateY(-1rem);
+      }
+      100% {
+        color: ${({ theme }) => theme.gray1};
+      }
     }
   }
 
@@ -103,6 +120,8 @@ export const Title = styled.div`
   }
 
   .portfolio {
+    margin-top: 0.4rem;
+
     opacity: 0;
     animation: transform-portfolio 1.5s 1.5s ease-in-out forwards;
 

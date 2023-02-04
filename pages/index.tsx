@@ -37,8 +37,27 @@ export default function Home() {
         <MousePointer left={mousePosition.left} top={mousePosition.top} />
         <div className="line top" />
         <Title>
-          <h1 className="name">Hyojeong</h1>
-          <h1 className="portfolio">Portfolio</h1>
+          <div className="name">
+            <h1>H</h1>
+            <h1>y</h1>
+            <h1>o</h1>
+            <h1>j</h1>
+            <h1>e</h1>
+            <h1>o</h1>
+            <h1>n</h1>
+            <h1>g</h1>
+          </div>
+          <div className="portfolio">
+            <h1>P</h1>
+            <h1>o</h1>
+            <h1>r</h1>
+            <h1>t</h1>
+            <h1>f</h1>
+            <h1>o</h1>
+            <h1>l</h1>
+            <h1>i</h1>
+            <h1>o</h1>
+          </div>
         </Title>
         <div className="line bottom" />
         <ScrollBox>
