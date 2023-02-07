@@ -53,6 +53,14 @@ export const Container = styled.div`
     .line {
       width: 30rem;
     }
+
+    .top {
+      animation: line-opening-mobile 1.5s ease-in-out, transform-top 1.5s 1.5s ease-in-out forwards;
+    }
+
+    .bottom {
+      animation: line-opening-mobile 1.5s ease-in-out, transform-bottom 1.5s 1.5s ease-in-out forwards;
+    }
   }
 
   @keyframes line-opening {
@@ -62,6 +70,17 @@ export const Container = styled.div`
     }
     100% {
       width: 50rem;
+      transform: translateY(-4rem);
+    }
+  }
+
+  @keyframes line-opening-mobile {
+    0% {
+      width: 0;
+      transform: translateY(-4rem);
+    }
+    100% {
+      width: 30rem;
       transform: translateY(-4rem);
     }
   }

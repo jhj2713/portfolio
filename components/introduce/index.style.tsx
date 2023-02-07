@@ -40,6 +40,37 @@ export const Container = styled.div`
     }
   }
 
+  @media (max-width: 820px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 0 6.4rem;
+
+    .contents {
+      margin-left: 0;
+      margin-top: 4rem;
+    }
+
+    .description {
+      margin-top: 2.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 3.2rem;
+
+    .contents {
+      margin-left: 0;
+      margin-top: 3.2rem;
+    }
+
+    .description {
+      margin-top: 2rem;
+      font-size: 2rem;
+    }
+  }
+
   @keyframes description-opening {
     0% {
       opacity: 0;
@@ -73,12 +104,32 @@ export const Title = styled.div`
     animation: text-opening 1s 1s forwards;
   }
 
+  @media (max-width: 480px) {
+    .text {
+      font-size: 3.2rem;
+    }
+
+    .line {
+      width: 11.2rem;
+      animation: underline-opening-mobile 1s;
+    }
+  }
+
   @keyframes underline-opening {
     0% {
       width: 0;
     }
     100% {
       width: 14rem;
+    }
+  }
+
+  @keyframes underline-opening-mobile {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 11.2rem;
     }
   }
 
@@ -93,8 +144,9 @@ export const Title = styled.div`
 `;
 
 export const ProfileImage = styled.img`
-  width: 32rem;
-  height: 32rem;
+  width: 50%;
+  max-width: 36rem;
+  min-width: 28rem;
 
   opacity: 0;
 
