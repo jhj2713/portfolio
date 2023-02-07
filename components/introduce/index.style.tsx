@@ -81,68 +81,6 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.div`
-  display: inline-block;
-
-  .line {
-    height: 2px;
-    width: 14rem;
-
-    background-color: ${({ theme }) => theme.primary};
-
-    animation: underline-opening 1s;
-  }
-
-  .text {
-    font-size: 4rem;
-    font-weight: 800;
-
-    color: ${({ theme }) => theme.primary};
-
-    opacity: 0;
-
-    animation: text-opening 1s 1s forwards;
-  }
-
-  @media (max-width: 480px) {
-    .text {
-      font-size: 3.2rem;
-    }
-
-    .line {
-      width: 11.2rem;
-      animation: underline-opening-mobile 1s;
-    }
-  }
-
-  @keyframes underline-opening {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 14rem;
-    }
-  }
-
-  @keyframes underline-opening-mobile {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 11.2rem;
-    }
-  }
-
-  @keyframes text-opening {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-`;
-
 export const ProfileImage = styled.img`
   width: 50%;
   max-width: 36rem;
