@@ -1,7 +1,19 @@
 import styled from '@emotion/styled';
 
+export const Container = styled.div`
+  width: 100%;
+  height: 300vh;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 export const MousePointer = styled.div<{ left: number; top: number }>`
-  position: absolute;
+  position: fixed;
   left: ${({ left }) => left}px;
   top: ${({ top }) => top}px;
 

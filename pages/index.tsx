@@ -1,10 +1,11 @@
 import Header from '@/components/header';
+import Introduce from '@/components/introduce';
 import Main from '@/components/main';
 import { MODE } from '@/constant/display-mode';
 import { SIDE_MENU, ISideMenu, MENU_MAP, IMenuMap } from '@/constant/sidebar-menu';
 import { GetServerSideProps } from 'next';
 import { useEffect, useRef, useState } from 'react';
-import { MousePointer } from './index.style';
+import { Container, MousePointer } from './index.style';
 
 export default function Home({ id }: { id: IMenuMap }) {
   const [mousePosition, setMousePosition] = useState({ left: -100, top: -100 });
@@ -13,6 +14,15 @@ export default function Home({ id }: { id: IMenuMap }) {
 
   const throttle = useRef<boolean>(false);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.scrollTo(0, window.visualViewport.height);
+      window.addEventListener('scroll', handleScrollRouting);
+      clearTimeout(timer);
+    }, 1000);
+
+    return () => window.removeEventListener('scroll', handleScrollRouting);
+  }, [pageIndex]);
   useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
 
@@ -33,11 +43,28 @@ export default function Home({ id }: { id: IMenuMap }) {
     }
   };
 
+  const handleScrollRouting = () => {
+    if (window.scrollY > (window.visualViewport.height * 3) / 2) {
+      if (pageIndex === 5) window.scrollTo(0, window.visualViewport.height);
+      else setPageIndex((pageIndex + 1) as ISideMenu);
+    } else if (window.scrollY < (window.visualViewport.height * 2) / 3) {
+      if (pageIndex === 0) window.scrollTo(0, window.visualViewport.height);
+      else setPageIndex((pageIndex - 1) as ISideMenu);
+    }
+  };
+
+  const pageRenderer = () => {
+    if (pageIndex === SIDE_MENU.MAIN) return <Main />;
+    else return <Introduce />;
+  };
+
   return (
     <>
-      <Header isToggle={isToggle} setIsToggle={setIsToggle} mode={MODE.DARK} selectedMenu={SIDE_MENU.MAIN} />
-      <Main />
-      <MousePointer left={mousePosition.left} top={mousePosition.top} />
+      <Header isToggle={isToggle} setIsToggle={setIsToggle} mode={MODE.DARK} selectedMenu={pageIndex} />
+      <Container>
+        {pageRenderer()}
+        <MousePointer left={mousePosition.left} top={mousePosition.top} />
+      </Container>
     </>
   );
 }
