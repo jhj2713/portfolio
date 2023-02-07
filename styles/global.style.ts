@@ -153,6 +153,10 @@ export default css`
     }
   }
 
+  p {
+    display: inline;
+  }
+
   li,
   ol,
   ul {
