@@ -4,6 +4,7 @@ import Main from '@/components/main';
 import { MODE } from '@/constant/display-mode';
 import { SIDE_MENU, ISideMenu, MENU_MAP, IMenuMap } from '@/constant/sidebar-menu';
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { Container, MousePointer } from './index.style';
 
@@ -13,6 +14,7 @@ export default function Home({ id }: { id: IMenuMap }) {
   const [pageIndex, setPageIndex] = useState<ISideMenu>(id ? MENU_MAP[id] : SIDE_MENU.MAIN);
 
   const throttle = useRef<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,11 +47,24 @@ export default function Home({ id }: { id: IMenuMap }) {
 
   const handleScrollRouting = () => {
     if (window.scrollY > (window.visualViewport.height * 3) / 2) {
-      if (pageIndex === 5) window.scrollTo(0, window.visualViewport.height);
-      else setPageIndex((pageIndex + 1) as ISideMenu);
+      if (pageIndex === 5) {
+        window.scrollTo(0, window.visualViewport.height);
+        return;
+      } else {
+        router.push(`/?id=${Object.keys(MENU_MAP)[pageIndex + 1]}`);
+        setPageIndex((pageIndex + 1) as ISideMenu);
+      }
     } else if (window.scrollY < (window.visualViewport.height * 2) / 3) {
-      if (pageIndex === 0) window.scrollTo(0, window.visualViewport.height);
-      else setPageIndex((pageIndex - 1) as ISideMenu);
+      if (pageIndex === 0) {
+        window.scrollTo(0, window.visualViewport.height);
+        return;
+      } else if (pageIndex === 1) {
+        router.push(`/`);
+      } else {
+        router.push(`/?id=${Object.keys(MENU_MAP)[pageIndex - 1]}`);
+      }
+
+      setPageIndex((pageIndex - 1) as ISideMenu);
     }
   };
 
@@ -60,7 +75,13 @@ export default function Home({ id }: { id: IMenuMap }) {
 
   return (
     <>
-      <Header isToggle={isToggle} setIsToggle={setIsToggle} mode={MODE.DARK} selectedMenu={pageIndex} />
+      <Header
+        isToggle={isToggle}
+        setIsToggle={setIsToggle}
+        mode={MODE.DARK}
+        selectedMenu={pageIndex}
+        setPageIndex={setPageIndex}
+      />
       <Container>
         {pageRenderer()}
         <MousePointer left={mousePosition.left} top={mousePosition.top} />
@@ -72,13 +93,23 @@ export default function Home({ id }: { id: IMenuMap }) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = context.query;
 
-  if (query.id)
-    return {
-      props: {
-        id: query.id,
-      },
-    };
-  else
+  if (query.id) {
+    if (MENU_MAP[String(query.id)]) {
+      return {
+        props: {
+          id: query.id,
+        },
+      };
+    } else {
+      return {
+        redirect: {
+          permanent: false,
+          destination: '/',
+        },
+        props: {},
+      };
+    }
+  } else
     return {
       props: {},
     };

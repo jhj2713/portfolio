@@ -7,4 +7,5 @@ export interface IHeader {
   setIsToggle: Dispatch<boolean>;
   mode: IMode;
   selectedMenu: ISideMenu;
+  setPageIndex: Dispatch<ISideMenu>;
 }
