@@ -144,6 +144,15 @@ export default css`
     letter-spacing: -0.03rem;
   }
 
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   li,
   ol,
   ul {
