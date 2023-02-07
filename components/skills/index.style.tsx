@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   position: fixed;
+  overflow: scroll;
 
   width: 100%;
   height: 100vh;
@@ -30,6 +31,11 @@ export const Container = styled.div`
     opacity: 0;
 
     animation: skills-opening 1s 1s forwards;
+  }
+
+  .tag {
+    display: inline-block;
+    margin: 0 0.8rem 1.2rem 0;
   }
 
   .description {
@@ -68,6 +74,38 @@ export const Container = styled.div`
       background-color: ${({ theme }) => theme.primary};
 
       border-radius: 50%;
+    }
+  }
+
+  @media (max-width: 820px) {
+    padding: 0 6.4rem;
+
+    .description + .description {
+      margin-top: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 3rem;
+
+    .contents {
+      margin-top: 2rem;
+    }
+
+    .description-text {
+      font-size: 1.6rem;
+    }
+
+    .description + .description {
+      margin-top: 1rem;
+    }
+
+    .tags {
+      margin-top: 2rem;
+    }
+
+    .tag {
+      margin: 0 0.4rem 0.6rem 0;
     }
   }
 

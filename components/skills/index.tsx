@@ -34,13 +34,7 @@ export default function Skills() {
         {tags.map((tagLine, index) => (
           <div key={index} className="tag-line">
             {tagLine.map((tag, idx) => (
-              <div
-                key={idx}
-                style={{
-                  display: 'inline-block',
-                  margin: '0 0.8rem 1.2rem 0',
-                }}
-              >
+              <div key={idx} className="tag">
                 <Tag borderColor={color.primary} backgroundColor="transparent" textColor={color.primary} text={tag} />
               </div>
             ))}

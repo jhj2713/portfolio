@@ -16,4 +16,12 @@ export const Container = styled.div<{ borderColor: string; backgroundColor: stri
 
     color: ${({ textColor }) => textColor};
   }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem 1rem;
+
+    .tag-text {
+      font-size: 1.2rem;
+    }
+  }
 `;
