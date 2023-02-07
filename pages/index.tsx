@@ -1,9 +1,11 @@
 import Header from '@/components/header';
 import Introduce from '@/components/introduce';
 import Main from '@/components/main';
+import Projects from '@/components/projects';
 import Skills from '@/components/skills';
 import { MODE } from '@/constant/display-mode';
 import { SIDE_MENU, ISideMenu, MENU_MAP, IMenuMap } from '@/constant/sidebar-menu';
+import color from '@/styles/color.style';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
@@ -13,6 +15,7 @@ export default function Home({ id }: { id: IMenuMap }) {
   const [mousePosition, setMousePosition] = useState({ left: -100, top: -100 });
   const [isToggle, setIsToggle] = useState<boolean>(false);
   const [pageIndex, setPageIndex] = useState<ISideMenu>(id ? MENU_MAP[id] : SIDE_MENU.MAIN);
+  const [pointerColor, setPointerColor] = useState<string>(color.primary);
 
   const throttle = useRef<boolean>(false);
   const router = useRouter();
@@ -23,6 +26,8 @@ export default function Home({ id }: { id: IMenuMap }) {
       window.addEventListener('scroll', handleScrollRouting);
       clearTimeout(timer);
     }, 1000);
+
+    if (pageIndex !== SIDE_MENU.PROJECTS && pageIndex !== SIDE_MENU.EXPERIENCES) setPointerColor(color.primary);
 
     return () => window.removeEventListener('scroll', handleScrollRouting);
   }, [pageIndex]);
@@ -72,7 +77,8 @@ export default function Home({ id }: { id: IMenuMap }) {
   const pageRenderer = () => {
     if (pageIndex === SIDE_MENU.MAIN) return <Main />;
     else if (pageIndex === SIDE_MENU.INTRODUCE) return <Introduce />;
-    else return <Skills />;
+    else if (pageIndex === SIDE_MENU.SKILLS) return <Skills />;
+    else return <Projects setPointerColor={setPointerColor} />;
   };
 
   const handleMode = () => {
@@ -91,7 +97,7 @@ export default function Home({ id }: { id: IMenuMap }) {
       />
       <Container>
         {pageRenderer()}
-        <MousePointer left={mousePosition.left} top={mousePosition.top} />
+        <MousePointer left={mousePosition.left} top={mousePosition.top} pointerColor={pointerColor} />
       </Container>
     </>
   );

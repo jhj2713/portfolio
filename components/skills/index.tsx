@@ -32,7 +32,7 @@ export default function Skills() {
       </div>
       <div className="tags">
         {tags.map((tagLine, index) => (
-          <div key={index} className="tag-line">
+          <div key={index}>
             {tagLine.map((tag, idx) => (
               <div key={idx} className="tag">
                 <Tag borderColor={color.primary} backgroundColor="transparent" textColor={color.primary} text={tag} />

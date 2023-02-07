@@ -22,7 +22,7 @@ export const Container = styled.div<{ mode: IMode }>`
       font-size: 1.6rem;
       font-weight: 200;
 
-      color: ${({ theme, mode }) => (mode === MODE.DARK ? theme.gray1 : theme.gray9)};
+      color: ${({ theme, mode }) => (mode === MODE.DARK ? theme.gray1 : theme.gray8)};
     }
   }
 
@@ -41,7 +41,7 @@ export const Hamburger = styled.div<{ isToggle: boolean; mode: IMode }>`
     height: 0.3rem;
 
     border-radius: 0.3rem;
-    background-color: ${({ theme, mode }) => (mode === MODE.DARK ? theme.gray1 : theme.gray9)};
+    background-color: ${({ theme, mode }) => (mode === MODE.DARK ? theme.gray1 : theme.gray8)};
 
     transition: 0.3s;
 
