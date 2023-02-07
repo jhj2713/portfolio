@@ -3,7 +3,8 @@ import Tag from '../tag';
 import { Container, Mockup, Project, ProjectImage } from './index.style';
 import { IProjects } from './index.type';
 import MacPointer from '@/public/image/mac-pointer.svg';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function Projects({ setPointerColor }: IProjects) {
   const swiperContainerRef = useRef<HTMLDivElement>(null);
@@ -43,14 +44,14 @@ export default function Projects({ setPointerColor }: IProjects) {
 
     const width = swiperContainerRef.current.clientWidth;
 
-    const sum = current.current + (endX - start.current);
-    let destination = Math.round(sum / width) * width;
-    if (destination > 0) {
-      destination = 0;
-    } else if (destination < -(width * 2)) {
-      destination = -(width * 2);
+    let destination = current.current;
+    if (endX - start.current < -(width / 3) / 3) {
+      destination -= width / 3;
+    } else if (endX - start.current > width / 3 / 3) {
+      destination += width / 3;
     }
 
+    if (destination <= -width || destination > 0) return;
     swiperRef.current.style.transform = `translate3d(${destination}px, 0px, 0px)`;
     swiperRef.current.style.transitionDuration = '300ms';
     current.current = destination;
@@ -62,6 +63,18 @@ export default function Projects({ setPointerColor }: IProjects) {
 
   const handleMouseEnd = (e: MouseEvent) => {
     handleEnd(e.pageX);
+  };
+
+  const swipeLeft = () => {
+    if (!swiperContainerRef.current) return;
+    start.current = 0;
+    handleEnd(swiperContainerRef.current.clientWidth);
+  };
+
+  const swipeRight = () => {
+    if (!swiperContainerRef.current) return;
+    start.current = swiperContainerRef.current.clientWidth / 3;
+    handleEnd(0);
   };
 
   return (
@@ -113,6 +126,12 @@ export default function Projects({ setPointerColor }: IProjects) {
             </div>
           ))}
         </div>
+      </div>
+      <div className="swiper-button swiper-left" onClick={swipeLeft}>
+        <Image alt="swipe left" src="/image/swiper.svg" width={30} height={56} />
+      </div>
+      <div className="swiper-button swiper-right" onClick={swipeRight}>
+        <Image alt="swipe right" src="/image/swiper.svg" width={30} height={56} />
       </div>
     </Container>
   );

@@ -11,8 +11,7 @@ export const Container = styled.div`
   background-repeat: repeat;
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
 
   box-sizing: border-box;
 
@@ -24,6 +23,28 @@ export const Container = styled.div`
 
   .swiper-item {
     width: 100vw;
+  }
+
+  .swiper-button {
+    opacity: 0.6;
+    transition: 0.3s;
+
+    position: absolute;
+
+    cursor: pointer;
+
+    :hover {
+      opacity: 1;
+    }
+  }
+
+  .swiper-left {
+    left: 2rem;
+    transform: scaleX(-1);
+  }
+
+  .swiper-right {
+    right: 2rem;
   }
 `;
 
