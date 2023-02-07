@@ -1,6 +1,7 @@
 import Header from '@/components/header';
 import Introduce from '@/components/introduce';
 import Main from '@/components/main';
+import Skills from '@/components/skills';
 import { MODE } from '@/constant/display-mode';
 import { SIDE_MENU, ISideMenu, MENU_MAP, IMenuMap } from '@/constant/sidebar-menu';
 import { GetServerSideProps } from 'next';
@@ -70,7 +71,8 @@ export default function Home({ id }: { id: IMenuMap }) {
 
   const pageRenderer = () => {
     if (pageIndex === SIDE_MENU.MAIN) return <Main />;
-    else return <Introduce />;
+    else if (pageIndex === SIDE_MENU.INTRODUCE) return <Introduce />;
+    else return <Skills />;
   };
 
   return (
