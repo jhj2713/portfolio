@@ -168,4 +168,8 @@ export default css`
     background-color: transparent;
     cursor: pointer;
   }
+
+  img {
+    -webkit-user-drag: none;
+  }
 `;

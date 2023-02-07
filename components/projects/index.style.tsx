@@ -14,12 +14,22 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  padding: 10rem;
   box-sizing: border-box;
+
+  .swiper {
+    width: 300vw;
+    display: flex;
+    overflow-x: hidden;
+  }
+
+  .swiper-item {
+    width: 100vw;
+  }
 `;
 
 export const Project = styled.div<{ color: string }>`
   display: flex;
+  margin: 10rem;
 
   .left {
     position: relative;
