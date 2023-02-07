@@ -75,12 +75,17 @@ export default function Home({ id }: { id: IMenuMap }) {
     else return <Skills />;
   };
 
+  const handleMode = () => {
+    if (pageIndex === SIDE_MENU.PROJECTS || pageIndex === SIDE_MENU.EXPERIENCES) return MODE.LIGHT;
+    return MODE.DARK;
+  };
+
   return (
     <>
       <Header
         isToggle={isToggle}
         setIsToggle={setIsToggle}
-        mode={MODE.DARK}
+        mode={handleMode()}
         selectedMenu={pageIndex}
         setPageIndex={setPageIndex}
       />
