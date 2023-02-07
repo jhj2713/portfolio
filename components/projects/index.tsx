@@ -16,6 +16,8 @@ export default function Projects({ setPointerColor }: IProjects) {
   useEffect(() => {
     if (!swiperRef.current) return;
 
+    setPointerColor(projects[0].color);
+
     swiperRef.current.addEventListener('touchstart', handleTouchStart);
     swiperRef.current.addEventListener('touchend', handleTouchEnd);
 
@@ -52,9 +54,21 @@ export default function Projects({ setPointerColor }: IProjects) {
     }
 
     if (destination <= -width || destination > 0) return;
+
+    setPointerColor(handlePointerColor(destination, width));
+
     swiperRef.current.style.transform = `translate3d(${destination}px, 0px, 0px)`;
     swiperRef.current.style.transitionDuration = '300ms';
     current.current = destination;
+  };
+
+  const handlePointerColor = (dest: number, width: number) => {
+    if (dest === 0) {
+      return projects[0].color;
+    } else if (dest === -width / 3) {
+      return projects[1].color;
+    }
+    return projects[2].color;
   };
 
   const handleTouchEnd = (e: TouchEvent) => {
