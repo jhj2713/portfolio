@@ -17,7 +17,8 @@ export const Wrapper = styled.div`
     padding: 2.4rem;
 
     width: calc(100vw - 16rem);
-    height: calc(100vh - 12rem);
+    max-height: calc(100vh - 12rem);
+    height: auto;
 
     max-width: 98rem;
 
@@ -25,7 +26,7 @@ export const Wrapper = styled.div`
   }
 
   .contents {
-    height: calc(100vh - 22rem);
+    max-height: calc(100vh - 22rem);
     margin: 1.2rem 2rem;
 
     overflow: auto;
@@ -44,13 +45,13 @@ export const Wrapper = styled.div`
   @media (max-width: 480px) {
     .container {
       width: calc(100vw - 4.8rem);
-      height: calc(100vh - 12rem);
+      max-height: calc(100vh - 12rem);
 
       padding: 2rem;
     }
 
     .contents {
-      height: calc(100vh - 20rem);
+      max-height: calc(100vh - 20rem);
       margin: 1.2rem 0.6rem;
     }
   }

@@ -20,6 +20,7 @@ export const Container = styled.div`
 
   .swiper-item {
     width: 100vw;
+    display: flex;
   }
 
   @keyframes projects-opening {
@@ -36,6 +37,7 @@ export const Container = styled.div`
 
 export const Project = styled.div<{ color: string }>`
   display: flex;
+  width: 100%;
   margin: 10rem;
 
   .left {
@@ -113,7 +115,7 @@ export const Project = styled.div<{ color: string }>`
 
     font-size: 2rem;
     font-weight: 300;
-    line-height: 140%;
+    line-height: 150%;
 
     color: ${({ theme }) => theme.gray8};
   }
@@ -133,8 +135,11 @@ export const Project = styled.div<{ color: string }>`
 
   @media (max-width: 820px) {
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+
+    .left {
+      align-self: center;
+    }
 
     .right {
       margin-left: 0rem;
@@ -188,7 +193,7 @@ export const ModalContents = styled.div<{ color: string }>`
   .modal-description {
     font-size: 1.8rem;
     font-weight: 300;
-    line-height: 140%;
+    line-height: 150%;
 
     margin-top: 1.2rem;
   }
@@ -211,6 +216,8 @@ export const ModalContents = styled.div<{ color: string }>`
 
   .modal-contents {
     margin-top: 1.6rem;
+
+    word-break: break-all;
   }
 
   .modal-text {
@@ -218,7 +225,7 @@ export const ModalContents = styled.div<{ color: string }>`
 
     font-size: 1.8rem;
     font-weight: 300;
-    line-height: 140%;
+    line-height: 150%;
 
     margin-top: 1rem;
   }
@@ -295,8 +302,6 @@ export const ModalContents = styled.div<{ color: string }>`
     }
 
     .modal-text {
-      margin-top: 0.6rem;
-
       font-size: 1.6rem;
     }
 
