@@ -1,3 +1,4 @@
+import Experiences from '@/components/experiences';
 import Header from '@/components/header';
 import Introduce from '@/components/introduce';
 import Main from '@/components/main';
@@ -78,7 +79,8 @@ export default function Home({ id }: { id: IMenuMap }) {
     if (pageIndex === SIDE_MENU.MAIN) return <Main />;
     else if (pageIndex === SIDE_MENU.INTRODUCE) return <Introduce />;
     else if (pageIndex === SIDE_MENU.SKILLS) return <Skills />;
-    else return <Projects setPointerColor={setPointerColor} />;
+    else if (pageIndex === SIDE_MENU.PROJECTS) return <Projects setPointerColor={setPointerColor} />;
+    else return <Experiences setPointerColor={setPointerColor} />;
   };
 
   const handleMode = () => {

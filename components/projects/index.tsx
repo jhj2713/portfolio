@@ -1,16 +1,15 @@
 import { projects, IProject } from '@/constant/data/projects';
 import Tag from '../tag';
 import { Container, Mockup, ModalContents, Project, ProjectImage } from './index.style';
-import { IProjects } from './index.type';
 import MacPointer from '@/public/image/mac-pointer.svg';
-import { useEffect, useState } from 'react';
+import { Dispatch, useEffect, useState } from 'react';
 import Swiper from '../swiper';
 import Modal from '../modal';
 import useModal from '@/hooks/useModal';
 import color from '@/styles/color.style';
 import Link from 'next/link';
 
-export default function Projects({ setPointerColor }: IProjects) {
+export default function Projects({ setPointerColor }: { setPointerColor: Dispatch<string> }) {
   const { modalRef, isOpenModal, openModal, closeModal } = useModal();
   const [detailContents, setDetailContents] = useState<IProject>({
     title: '',
