@@ -17,18 +17,22 @@ export const Container = styled.div<{ mode: IMode }>`
     padding: 0 2.8rem;
 
     z-index: 10;
+  }
 
-    .title {
-      font-size: 1.6rem;
-      font-weight: 200;
+  .title {
+    font-size: 1.6rem;
+    font-weight: 200;
 
-      color: ${({ theme, mode }) => (mode === MODE.DARK ? theme.gray1 : theme.gray8)};
-    }
+    color: ${({ theme, mode }) => (mode === MODE.DARK ? theme.gray1 : theme.gray8)};
   }
 
   @media (max-width: 480px) {
     .header {
       height: 8.4rem;
+    }
+
+    .title {
+      font-size: 1.4rem;
     }
   }
 `;
