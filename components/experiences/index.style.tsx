@@ -34,7 +34,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Project = styled.div<{ color: string }>`
+export const Experience = styled.div<{ color: string }>`
   display: flex;
   margin: 10rem;
 
@@ -95,13 +95,6 @@ export const Project = styled.div<{ color: string }>`
     }
   }
 
-  .date {
-    font-size: 1.2rem;
-    font-weight: 300;
-
-    color: ${({ theme }) => theme.gray6};
-  }
-
   .contents {
     margin-top: 1.6rem;
 
@@ -141,10 +134,6 @@ export const Project = styled.div<{ color: string }>`
 
     .title {
       font-size: 3.2rem;
-    }
-
-    .date {
-      display: none;
     }
 
     .contents {
@@ -279,6 +268,10 @@ export const ModalContents = styled.div<{ color: string }>`
   }
 
   @media (max-width: 480px) {
+    .date {
+      font-size: 1.4rem;
+    }
+
     .modal-title {
       font-size: 3.2rem;
     }

@@ -1,5 +1,5 @@
 import Tag from '../tag';
-import { Container, Mockup, ModalContents, Project, ProjectImage } from './index.style';
+import { Container, Mockup, ModalContents, Experience, ProjectImage } from './index.style';
 import MacPointer from '@/public/image/mac-pointer.svg';
 import { Dispatch, useEffect, useState } from 'react';
 import Swiper from '../swiper';
@@ -33,7 +33,7 @@ export default function Experiences({ setPointerColor }: { setPointerColor: Disp
       <Swiper itemCount={2} colors={experiences.map((p) => p.color)} setPointerColor={setPointerColor}>
         {experiences.map((experience, idx) => (
           <div key={experience.title} className="swiper-item">
-            <Project color={experience.color}>
+            <Experience color={experience.color}>
               <div className="left">
                 <Mockup alt="IMAC mockup" src="/image/mac-mockup.png" />
                 <ProjectImage alt="project image" src={experience.imageUrl} onClick={() => handleDetail(idx)} />
@@ -71,7 +71,7 @@ export default function Experiences({ setPointerColor }: { setPointerColor: Disp
                   ))}
                 </div>
               </div>
-            </Project>
+            </Experience>
           </div>
         ))}
       </Swiper>
@@ -100,20 +100,24 @@ export default function Experiences({ setPointerColor }: { setPointerColor: Disp
                       <div className="list-style">
                         <div className="circle" />
                       </div>
-                      <p>{text}</p>
-                      {link ? (
-                        <Link className="link" href={link} target="_blank">
-                          Learn More
-                        </Link>
-                      ) : null}
+                      <div>
+                        {text}
+                        {link ? (
+                          <Link className="link" href={link} target="_blank">
+                            Learn More
+                          </Link>
+                        ) : null}
+                      </div>
                     </div>
                   ) : (
                     <div key={idx} className="modal-text">
                       <div className="list-style">
                         <div className="circle" />
                       </div>
-                      <p>{text}</p>
-                      {date ? <p className="date">({date})</p> : null}
+                      <div>
+                        {text}
+                        {date ? <p className="date">({date})</p> : null}
+                      </div>
                     </div>
                   )
                 )

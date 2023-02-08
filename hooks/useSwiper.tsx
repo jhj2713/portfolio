@@ -39,13 +39,18 @@ export default function useSwiper(itemCount: number, colors: string[], setPointe
     const width = swiperContainerRef.current.clientWidth;
 
     let destination = current.current;
-    if (endX - start.current < -(width / itemCount) / 3) {
-      destination -= width / itemCount;
-    } else if (endX - start.current > width / itemCount / 3) {
-      destination += width / itemCount;
+    if (endX - start.current < -(width / 3) / 3) {
+      destination -= width / 3;
+    } else if (endX - start.current > width / 3 / 3) {
+      destination += width / 3;
     }
 
-    if (destination <= -width || destination > 0) return;
+    if (
+      destination > 0 ||
+      (itemCount === 3 && destination <= -width) ||
+      (itemCount === 2 && destination <= (-width * 2) / 3)
+    )
+      return;
 
     setPointerColor(handlePointerColor(destination, width));
 
@@ -57,7 +62,7 @@ export default function useSwiper(itemCount: number, colors: string[], setPointe
   const handlePointerColor = (dest: number, width: number) => {
     if (dest === 0) {
       return colors[0];
-    } else if (dest === -width / itemCount) {
+    } else if (dest === -width / 3) {
       return colors[1];
     }
     return colors[2];
