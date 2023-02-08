@@ -99,3 +99,5 @@ export const projects = [
     github: 'https://github.com/So-Woo-Ju/NoonSori',
   },
 ];
+
+export type IProject = (typeof projects)[0];

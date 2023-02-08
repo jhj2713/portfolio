@@ -110,4 +110,6 @@ export const ProjectImage = styled.img`
   width: 40%;
   max-width: 30rem;
   min-width: 22.5rem;
+
+  cursor: pointer;
 `;
