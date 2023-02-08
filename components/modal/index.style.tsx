@@ -25,7 +25,10 @@ export const Wrapper = styled.div`
   }
 
   .contents {
+    height: calc(100vh - 22rem);
     margin: 1.2rem 2rem;
+
+    overflow: auto;
   }
 
   @media (max-width: 820px) {
@@ -47,7 +50,8 @@ export const Wrapper = styled.div`
     }
 
     .contents {
-      margin: 0.8rem 0;
+      height: calc(100vh - 20rem);
+      margin: 1.2rem 0.6rem;
     }
   }
 `;
