@@ -15,8 +15,22 @@ export const Container = styled.div`
 
   box-sizing: border-box;
 
+  opacity: 0;
+  animation: projects-opening 1s forwards;
+
   .swiper-item {
     width: 100vw;
+  }
+
+  @keyframes projects-opening {
+    10% {
+      opacity: 0;
+      transform: translateY(100vh);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
 
@@ -64,6 +78,27 @@ export const Project = styled.div<{ color: string }>`
     font-weight: 600;
 
     color: ${({ theme }) => theme.gray8};
+
+    h1 {
+      display: inline-block;
+
+      :hover {
+        animation: hover-animation 0.5s ease-in-out;
+      }
+
+      @keyframes hover-animation {
+        0% {
+          color: ${({ theme }) => theme.gray8};
+        }
+        50% {
+          color: ${({ color }) => color};
+          transform: translateY(-1rem);
+        }
+        100% {
+          color: ${({ theme }) => theme.gray8};
+        }
+      }
+    }
   }
 
   .date {

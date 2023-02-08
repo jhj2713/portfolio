@@ -49,7 +49,11 @@ export default function Projects({ setPointerColor }: IProjects) {
               </div>
               <div className="right">
                 <div className="top">
-                  <h1 className="title">{project.title}</h1>
+                  <div className="title">
+                    {project.title.split('').map((text, idx) => (
+                      <h1 key={idx}>{text}</h1>
+                    ))}
+                  </div>
                   <p className="date">
                     {project.dates[0]} ~ {project.dates[1]}
                   </p>
