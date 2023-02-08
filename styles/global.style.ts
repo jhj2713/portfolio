@@ -148,6 +148,8 @@ export default css`
     -ms-overflow-style: none;
     scrollbar-width: none;
 
+    overscroll-behavior: none;
+
     ::-webkit-scrollbar {
       display: none;
     }

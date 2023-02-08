@@ -1,4 +1,5 @@
 import { MENU_MAP } from '@/constant/sidebar-menu';
+import { SWIPE_MODE } from '@/constant/swipe-mode';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Hamburger, Container, SideMenu, Menu } from './index.style';
@@ -15,7 +16,7 @@ const sideMenu = [
   { description: 'Contact', route: 'contact' },
 ];
 
-export default function Header({ isToggle, setIsToggle, mode, selectedMenu, setPageIndex }: IHeader) {
+export default function Header({ isToggle, setIsToggle, mode, selectedMenu, setPageIndex, setIsUnmount }: IHeader) {
   const [isFadeout, setIsFadeout] = useState<boolean>(false);
   const router = useRouter();
 
@@ -32,8 +33,13 @@ export default function Header({ isToggle, setIsToggle, mode, selectedMenu, setP
 
   const handleRouting = (id: string) => {
     handleToggle();
-    router.push(`/?id=${id}`);
-    setPageIndex(MENU_MAP[id]);
+    setIsUnmount(SWIPE_MODE.DOWN);
+    const timer = setTimeout(() => {
+      setIsUnmount(SWIPE_MODE.NOT_MOUNTED);
+      router.push(`/?id=${id}`);
+      setPageIndex(MENU_MAP[id]);
+      clearTimeout(timer);
+    }, 1000);
   };
 
   return (

@@ -117,6 +117,7 @@ export default function Home({ id }: { id: IMenuMap }) {
         mode={handleMode()}
         selectedMenu={pageIndex}
         setPageIndex={setPageIndex}
+        setIsUnmount={setIsUnmount}
       />
       <Container mode={handleMode()}>
         {pageRenderer()}
