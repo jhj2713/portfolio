@@ -5,14 +5,14 @@ export const Container = styled.div`
   align-items: center;
 
   opacity: 0;
-  animation: swiper-opening 0.01s 1s forwards;
+  animation: swiper-opening 0.01s forwards;
 
   .swiper {
     width: 300vw;
     display: flex;
     overflow-x: hidden;
 
-    animation: swiper-item-opening 0.5s 1s;
+    animation: swiper-item-opening 0.5s;
   }
 
   .swiper-button {
@@ -23,7 +23,7 @@ export const Container = styled.div`
 
     cursor: pointer;
 
-    animation: swiper-button-opening 0.5s 1s;
+    animation: swiper-button-opening 0.5s;
 
     :hover {
       opacity: 1;

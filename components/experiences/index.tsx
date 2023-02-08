@@ -1,14 +1,15 @@
 import Tag from '../tag';
 import { Container, Mockup, ModalContents, Experience, ProjectImage } from './index.style';
 import MacPointer from '@/public/image/mac-pointer.svg';
-import { Dispatch, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Swiper from '../swiper';
 import Modal from '../modal';
 import useModal from '@/hooks/useModal';
 import { experiences, IExperience } from '@/constant/data/experiences';
 import Link from 'next/link';
+import { IExperiences } from './index.type';
 
-export default function Experiences({ setPointerColor }: { setPointerColor: Dispatch<string> }) {
+export default function Experiences({ setPointerColor, isUnmount }: IExperiences) {
   const { modalRef, isOpenModal, openModal, closeModal } = useModal();
   const [detailContents, setDetailContents] = useState<IExperience>({
     title: '',
@@ -29,7 +30,7 @@ export default function Experiences({ setPointerColor }: { setPointerColor: Disp
   };
 
   return (
-    <Container>
+    <Container isUnmount={isUnmount}>
       <Swiper itemCount={2} colors={experiences.map((p) => p.color)} setPointerColor={setPointerColor}>
         {experiences.map((experience, idx) => (
           <div key={experience.title} className="swiper-item">

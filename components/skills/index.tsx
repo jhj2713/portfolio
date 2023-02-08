@@ -3,10 +3,11 @@ import MenuTitle from '../menu-title';
 import Tag from '../tag';
 import { Container } from './index.style';
 import color from '@/styles/color.style';
+import { ISwipeMode } from '@/constant/swipe-mode';
 
-export default function Skills() {
+export default function Skills({ isUnmount }: { isUnmount: ISwipeMode }) {
   return (
-    <Container>
+    <Container isUnmount={isUnmount}>
       <div>
         <MenuTitle title="Skills" />
       </div>

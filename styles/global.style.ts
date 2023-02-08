@@ -172,4 +172,22 @@ export default css`
   img {
     -webkit-user-drag: none;
   }
+
+  @keyframes down-closing {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100vh);
+    }
+  }
+
+  @keyframes up-closing {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
 `;

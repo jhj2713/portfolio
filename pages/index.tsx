@@ -7,6 +7,7 @@ import Projects from '@/components/projects';
 import Skills from '@/components/skills';
 import { MODE } from '@/constant/display-mode';
 import { SIDE_MENU, ISideMenu, MENU_MAP, IMenuMap } from '@/constant/sidebar-menu';
+import { ISwipeMode, SWIPE_MODE } from '@/constant/swipe-mode';
 import color from '@/styles/color.style';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
@@ -18,6 +19,7 @@ export default function Home({ id }: { id: IMenuMap }) {
   const [isToggle, setIsToggle] = useState<boolean>(false);
   const [pageIndex, setPageIndex] = useState<ISideMenu>(id ? MENU_MAP[id] : SIDE_MENU.MAIN);
   const [pointerColor, setPointerColor] = useState<string>(color.primary);
+  const [isUnmount, setIsUnmount] = useState<ISwipeMode>(SWIPE_MODE.NOT_MOUNTED);
 
   const throttle = useRef<boolean>(false);
   const router = useRouter();
@@ -59,30 +61,47 @@ export default function Home({ id }: { id: IMenuMap }) {
         window.scrollTo(0, window.visualViewport.height);
         return;
       } else {
-        router.push(`/?id=${Object.keys(MENU_MAP)[pageIndex + 1]}`);
-        setPageIndex((pageIndex + 1) as ISideMenu);
+        setIsUnmount(SWIPE_MODE.DOWN);
+        const timer = setTimeout(() => {
+          setIsUnmount(SWIPE_MODE.NOT_MOUNTED);
+          router.push(`/?id=${Object.keys(MENU_MAP)[pageIndex + 1]}`);
+          setPageIndex((pageIndex + 1) as ISideMenu);
+          clearTimeout(timer);
+        }, 1000);
       }
     } else if (window.scrollY < (window.visualViewport.height * 2) / 3) {
       if (pageIndex === 0) {
         window.scrollTo(0, window.visualViewport.height);
         return;
       } else if (pageIndex === 1) {
-        router.push(`/`);
+        setIsUnmount(SWIPE_MODE.UP);
+        const timer = setTimeout(() => {
+          setIsUnmount(SWIPE_MODE.NOT_MOUNTED);
+          router.push(`/`);
+          setPageIndex((pageIndex - 1) as ISideMenu);
+          clearTimeout(timer);
+        }, 1000);
       } else {
-        router.push(`/?id=${Object.keys(MENU_MAP)[pageIndex - 1]}`);
+        setIsUnmount(SWIPE_MODE.UP);
+        const timer = setTimeout(() => {
+          setIsUnmount(SWIPE_MODE.NOT_MOUNTED);
+          router.push(`/?id=${Object.keys(MENU_MAP)[pageIndex - 1]}`);
+          setPageIndex((pageIndex - 1) as ISideMenu);
+          clearTimeout(timer);
+        }, 1000);
       }
-
-      setPageIndex((pageIndex - 1) as ISideMenu);
     }
   };
 
   const pageRenderer = () => {
-    if (pageIndex === SIDE_MENU.MAIN) return <Main />;
-    else if (pageIndex === SIDE_MENU.INTRODUCE) return <Introduce />;
-    else if (pageIndex === SIDE_MENU.SKILLS) return <Skills />;
-    else if (pageIndex === SIDE_MENU.PROJECTS) return <Projects setPointerColor={setPointerColor} />;
-    else if (pageIndex === SIDE_MENU.EXPERIENCES) return <Experiences setPointerColor={setPointerColor} />;
-    else return <Contact />;
+    if (pageIndex === SIDE_MENU.MAIN) return <Main isUnmount={isUnmount} />;
+    else if (pageIndex === SIDE_MENU.INTRODUCE) return <Introduce isUnmount={isUnmount} />;
+    else if (pageIndex === SIDE_MENU.SKILLS) return <Skills isUnmount={isUnmount} />;
+    else if (pageIndex === SIDE_MENU.PROJECTS)
+      return <Projects setPointerColor={setPointerColor} isUnmount={isUnmount} />;
+    else if (pageIndex === SIDE_MENU.EXPERIENCES)
+      return <Experiences setPointerColor={setPointerColor} isUnmount={isUnmount} />;
+    else return <Contact isUnmount={isUnmount} />;
   };
 
   const handleMode = () => {
@@ -99,7 +118,7 @@ export default function Home({ id }: { id: IMenuMap }) {
         selectedMenu={pageIndex}
         setPageIndex={setPageIndex}
       />
-      <Container>
+      <Container mode={handleMode()}>
         {pageRenderer()}
         <MousePointer left={mousePosition.left} top={mousePosition.top} pointerColor={pointerColor} />
       </Container>

@@ -1,9 +1,10 @@
+import { ISwipeMode } from '@/constant/swipe-mode';
 import MenuTitle from '../menu-title';
 import { Container, ProfileImage } from './index.style';
 
-export default function Introduce() {
+export default function Introduce({ isUnmount }: { isUnmount: ISwipeMode }) {
   return (
-    <Container>
+    <Container isUnmount={isUnmount}>
       <ProfileImage alt="profile image" src="/image/profile.jpeg" />
       <div className="contents">
         <MenuTitle title="Growth" />

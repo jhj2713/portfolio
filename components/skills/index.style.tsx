@@ -1,15 +1,12 @@
+import { ISwipeMode, SWIPE_MODE } from '@/constant/swipe-mode';
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const Container = styled.div<{ isUnmount: ISwipeMode }>`
   position: fixed;
   overflow: scroll;
 
   width: 100%;
   height: 100vh;
-
-  background: url('/image/background-dark.png');
-  background-size: cover;
-  background-repeat: repeat;
 
   display: flex;
   flex-direction: column;
@@ -17,6 +14,9 @@ export const Container = styled.div`
 
   padding: 9.6rem;
   box-sizing: border-box;
+
+  animation: ${({ isUnmount }) =>
+    isUnmount === SWIPE_MODE.UP ? 'up-closing 1s' : isUnmount === SWIPE_MODE.DOWN ? 'down-closing 1s' : ''};
 
   .contents {
     margin-top: 4rem;

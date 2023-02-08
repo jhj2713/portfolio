@@ -1,10 +1,11 @@
+import { ISwipeMode } from '@/constant/swipe-mode';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from './index.style';
 
-export default function Contact() {
+export default function Contact({ isUnmount }: { isUnmount: ISwipeMode }) {
   return (
-    <Container>
+    <Container isUnmount={isUnmount}>
       <div className="contact">
         <div className="method">
           <Image alt="contact email" src="/image/contact/email.svg" width={30} height={30} />

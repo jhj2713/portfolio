@@ -1,36 +1,22 @@
+import { ISwipeMode, SWIPE_MODE } from '@/constant/swipe-mode';
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const Container = styled.div<{ isUnmount: ISwipeMode }>`
   position: fixed;
 
   width: 100%;
   height: 100vh;
-
-  background: url('/image/background-light.png');
-  background-size: cover;
-  background-repeat: repeat;
 
   display: flex;
   align-items: center;
 
   box-sizing: border-box;
 
-  opacity: 0;
-  animation: projects-opening 1s forwards;
+  animation: ${({ isUnmount }) =>
+    isUnmount === SWIPE_MODE.UP ? 'up-closing 1s' : isUnmount === SWIPE_MODE.DOWN ? 'down-closing 1s' : ''};
 
   .swiper-item {
     width: 100vw;
-  }
-
-  @keyframes projects-opening {
-    10% {
-      opacity: 0;
-      transform: translateY(100vh);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 `;
 

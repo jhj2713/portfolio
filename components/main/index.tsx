@@ -1,8 +1,9 @@
+import { ISwipeMode } from '@/constant/swipe-mode';
 import { Container, ScrollBox, Title } from './index.style';
 
-export default function Main() {
+export default function Main({ isUnmount }: { isUnmount: ISwipeMode }) {
   return (
-    <Container>
+    <Container isUnmount={isUnmount}>
       <div className="line top" />
       <Title>
         <div className="name">
