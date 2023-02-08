@@ -32,3 +32,13 @@ export const Container = styled.div`
     right: 2rem;
   }
 `;
+
+export const SwiperImage = styled.img`
+  width: 3rem;
+  height: 5.6rem;
+
+  @media (max-width: 480px) {
+    width: 2rem;
+    height: 4rem;
+  }
+`;

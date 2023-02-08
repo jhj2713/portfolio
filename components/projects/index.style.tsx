@@ -78,6 +78,7 @@ export const Project = styled.div<{ color: string }>`
 
     font-size: 2rem;
     font-weight: 300;
+    line-height: 140%;
 
     color: ${({ theme }) => theme.gray8};
   }
@@ -94,10 +95,37 @@ export const Project = styled.div<{ color: string }>`
     display: inline-block;
     margin: 0 0.8rem 1.2rem 0;
   }
+
+  @media (max-width: 820px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .right {
+      margin-left: 0rem;
+      margin-top: 4rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin: 6rem;
+
+    .title {
+      font-size: 3.2rem;
+    }
+
+    .date {
+      display: none;
+    }
+
+    .contents {
+      font-size: 1.6rem;
+    }
+  }
 `;
 
 export const Mockup = styled.img`
-  width: 50%;
+  width: 100%;
   max-width: 32rem;
   min-width: 24rem;
 `;
@@ -107,7 +135,7 @@ export const ProjectImage = styled.img`
   left: 0.8rem;
   top: 0.8rem;
 
-  width: 40%;
+  width: calc(100% - 1.6rem);
   max-width: 30rem;
   min-width: 22.5rem;
 
