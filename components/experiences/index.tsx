@@ -36,7 +36,7 @@ export default function Experiences({ setPointerColor, isUnmount }: IExperiences
           <div key={experience.title} className="swiper-item">
             <Experience color={experience.color}>
               <div className="left">
-                <Mockup alt="IMAC mockup" src="/image/mac-mockup.png" />
+                <Mockup alt="IMAC mockup" loading="eager" src="/image/mac-mockup.png" />
                 <ProjectImage alt="project image" src={experience.imageUrl} onClick={() => handleDetail(idx)} />
                 <div className="mac-pointer">
                   <MacPointer fill={experience.color} />

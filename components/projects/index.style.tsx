@@ -154,6 +154,9 @@ export const Mockup = styled.img`
   width: 100%;
   max-width: 32rem;
   min-width: 24rem;
+
+  max-height: 26.6rem;
+  min-height: 20rem;
 `;
 
 export const ProjectImage = styled.img`

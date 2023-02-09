@@ -8,7 +8,7 @@ export const experiences = [
     ],
     color: '#0E4C9C',
     tags: ['# IT', '# 개발', '# 동아리'],
-    imageUrl: '/image/experiences/ceos.png',
+    imageUrl: '/image/experiences/ceos.avif',
     contents: [
       [
         { text: 'CEOS 15기 프론트엔드', date: '2022.03.09. ~ 2022.08.05.' },
@@ -30,7 +30,7 @@ export const experiences = [
     description: ['지속 가능한 성장을 위한 ', '개발자 학습 커뮤니티', ''],
     color: '#2071FF',
     tags: ['# 개발', '# 지속 가능한 성장'],
-    imageUrl: '/image/experiences/boostcamp.png',
+    imageUrl: '/image/experiences/boostcamp.avif',
     contents: [
       [
         { text: '네이버 커넥트재단 부스트캠프 웹・모바일 7기 챌린지', date: '2022.07.18. ~ 2022.08.12.' },

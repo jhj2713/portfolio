@@ -41,7 +41,7 @@ export default function Projects({ setPointerColor, isUnmount }: IProjects) {
           <div key={project.title} className="swiper-item">
             <Project color={project.color}>
               <div className="left">
-                <Mockup alt="IMAC mockup" src="/image/mac-mockup.png" />
+                <Mockup alt="IMAC mockup" loading="eager" src="/image/mac-mockup.png" />
                 <ProjectImage alt="project image" src={project.imageUrl} onClick={() => handleDetail(idx)} />
                 <div className="mac-pointer">
                   <MacPointer fill={project.color} />

@@ -9,7 +9,7 @@ export const projects = [
     color: '#5464F2',
     dates: ['2022.05.04.', ''],
     tags: ['# React', '# TypeScript', '# Storybook', '# Redux-Toolkit', '# styled-components'],
-    imageUrl: '/image/projects/healthier.png',
+    imageUrl: '/image/projects/healthier.avif',
     role: [
       ['기획자 2명, 디자이너 2명, 프론트엔드 개발자 2명(본인 포함), 백엔드 개발자 2명'],
       ['디자인 시스템 문서화', 'Storybook으로 독자적인 환경에서 UI 컴포넌트 렌더링을 확인하고 디자인 시스템을 문서화'],
@@ -37,7 +37,7 @@ export const projects = [
     color: '#2071FF',
     dates: ['2022.11.07.', '2022.12.16.'],
     tags: ['# React', '# TypeScript', '# Recoil', '# Fabric.js', '# styled-components'],
-    imageUrl: '/image/projects/boocrum.png',
+    imageUrl: '/image/projects/boocrum.avif',
     role: [
       ['프론트엔드 개발자 3명(본인 포함), 백엔드 개발자 2명'],
       ['figma를 활용해 서비스 UI 프로토타입 제작'],
@@ -74,7 +74,7 @@ export const projects = [
     color: '#385DE2',
     dates: ['2021.09.07.', '2022.06.15.'],
     tags: ['# React', '# TypeScript', '# React-Query', '# styled-components'],
-    imageUrl: '/image/projects/noonsori.png',
+    imageUrl: '/image/projects/noonsori.avif',
     role: [
       ['프론트엔드 개발자 1명(본인 포함), 백엔드 개발자 3명'],
       ['인증 시스템 구현', '서비스 로그인 및 회원가입 구현', 'kakao, google 소셜 로그인 구현'],

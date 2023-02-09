@@ -6,7 +6,9 @@ export const Container = styled.div<{ mode: IMode }>`
   height: 300vh;
 
   background: ${({ mode }) =>
-    mode === MODE.DARK ? "url('/image/background-dark.png')" : "url('/image/background-light.png')"};
+    mode === MODE.DARK
+      ? "url('/image/background-dark.png'), url('/image/background-light.png')"
+      : "url('/image/background-light.png')"};
   background-size: cover;
   background-attachment: fixed;
 `;
