@@ -1,4 +1,5 @@
-import { MENU_MAP } from '@/constant/sidebar-menu';
+import { MODE } from '@/constant/display-mode';
+import { MENU_MAP, SIDE_MENU } from '@/constant/sidebar-menu';
 import { SWIPE_MODE } from '@/constant/swipe-mode';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -34,12 +35,23 @@ export default function Header({ isToggle, setIsToggle, mode, selectedMenu, setP
   const handleRouting = (id: string) => {
     handleToggle();
     setIsUnmount(SWIPE_MODE.DOWN);
+
+    let delay = 1000;
+    if (mode === MODE.DARK && (MENU_MAP[id] === SIDE_MENU.PROJECTS || MENU_MAP[id] === SIDE_MENU.EXPERIENCES)) {
+      delay = 1500;
+    } else if (
+      mode === MODE.LIGHT &&
+      (MENU_MAP[id] === SIDE_MENU.INTRODUCE || MENU_MAP[id] === SIDE_MENU.SKILLS || MENU_MAP[id] === SIDE_MENU.CONTACT)
+    ) {
+      delay = 1500;
+    }
+
     const timer = setTimeout(() => {
       setIsUnmount(SWIPE_MODE.NOT_MOUNTED);
       router.push(`/?id=${id}`);
       setPageIndex(MENU_MAP[id]);
       clearTimeout(timer);
-    }, 1000);
+    }, delay);
   };
 
   return (

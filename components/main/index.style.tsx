@@ -13,7 +13,11 @@ export const Container = styled.div<{ isUnmount: ISwipeMode }>`
   height: 100vh;
 
   animation: ${({ isUnmount }) =>
-    isUnmount === SWIPE_MODE.UP ? 'up-closing 1s' : isUnmount === SWIPE_MODE.DOWN ? 'down-closing 1s' : ''};
+    isUnmount === SWIPE_MODE.UP
+      ? 'up-closing 1s forwards'
+      : isUnmount === SWIPE_MODE.DOWN
+      ? 'down-closing 1s forwards'
+      : ''};
 
   .line {
     width: 50rem;

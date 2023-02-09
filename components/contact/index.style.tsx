@@ -18,7 +18,11 @@ export const Container = styled.div<{ isUnmount: ISwipeMode }>`
   color: ${({ theme }) => theme.gray1};
 
   animation: ${({ isUnmount }) =>
-    isUnmount === SWIPE_MODE.UP ? 'up-closing 1s' : isUnmount === SWIPE_MODE.DOWN ? 'down-closing 1s' : ''};
+    isUnmount === SWIPE_MODE.UP
+      ? 'up-closing 1s forwards'
+      : isUnmount === SWIPE_MODE.DOWN
+      ? 'down-closing 1s forwards'
+      : ''};
 
   .contact {
     display: flex;

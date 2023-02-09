@@ -65,12 +65,17 @@ export default function Home({ id }: { id: IMenuMap }) {
         return;
       } else {
         setIsUnmount(SWIPE_MODE.DOWN);
+        let delay = 1000;
+        if (pageIndex === SIDE_MENU.SKILLS || pageIndex === SIDE_MENU.EXPERIENCES) {
+          delay = 1500;
+        }
+
         const timer = setTimeout(() => {
           setIsUnmount(SWIPE_MODE.NOT_MOUNTED);
           router.push(`/?id=${Object.keys(MENU_MAP)[pageIndex + 1]}`);
           setPageIndex((pageIndex + 1) as ISideMenu);
           clearTimeout(timer);
-        }, 1000);
+        }, delay);
       }
     } else if (window.scrollY < (window.visualViewport.height * 2) / 3) {
       if (pageIndex === 0) {
@@ -78,6 +83,7 @@ export default function Home({ id }: { id: IMenuMap }) {
         return;
       } else if (pageIndex === 1) {
         setIsUnmount(SWIPE_MODE.UP);
+
         const timer = setTimeout(() => {
           setIsUnmount(SWIPE_MODE.NOT_MOUNTED);
           router.push(`/`);
@@ -86,12 +92,17 @@ export default function Home({ id }: { id: IMenuMap }) {
         }, 1000);
       } else {
         setIsUnmount(SWIPE_MODE.UP);
+        let delay = 1000;
+        if (pageIndex === SIDE_MENU.CONTACT || pageIndex === SIDE_MENU.PROJECTS) {
+          delay = 1500;
+        }
+
         const timer = setTimeout(() => {
           setIsUnmount(SWIPE_MODE.NOT_MOUNTED);
           router.push(`/?id=${Object.keys(MENU_MAP)[pageIndex - 1]}`);
           setPageIndex((pageIndex - 1) as ISideMenu);
           clearTimeout(timer);
-        }, 1000);
+        }, delay);
       }
     }
   };
@@ -122,8 +133,9 @@ export default function Home({ id }: { id: IMenuMap }) {
         setPageIndex={setPageIndex}
         setIsUnmount={setIsUnmount}
       />
-      <Container mode={handleMode()}>
+      <Container mode={handleMode()} isUnmount={isUnmount}>
         {pageRenderer()}
+        {isUnmount !== SWIPE_MODE.NOT_MOUNTED ? <div className="transition-background" /> : null}
         <MousePointer left={mousePosition.left} top={mousePosition.top} pointerColor={pointerColor} />
       </Container>
     </>

@@ -13,7 +13,11 @@ export const Container = styled.div<{ isUnmount: ISwipeMode }>`
   box-sizing: border-box;
 
   animation: ${({ isUnmount }) =>
-    isUnmount === SWIPE_MODE.UP ? 'up-closing 1s' : isUnmount === SWIPE_MODE.DOWN ? 'down-closing 1s' : ''};
+    isUnmount === SWIPE_MODE.UP
+      ? 'up-closing 1s forwards'
+      : isUnmount === SWIPE_MODE.DOWN
+      ? 'down-closing 1s forwards'
+      : ''};
 
   .swiper-item {
     width: 100vw;
