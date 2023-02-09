@@ -9,6 +9,7 @@ import useModal from '@/hooks/useModal';
 import color from '@/styles/color.style';
 import Link from 'next/link';
 import { IProjects } from './index.type';
+import Image from 'next/image';
 
 export default function Projects({ setPointerColor, isUnmount }: IProjects) {
   const { modalRef, isOpenModal, openModal, closeModal } = useModal();
@@ -41,7 +42,9 @@ export default function Projects({ setPointerColor, isUnmount }: IProjects) {
           <div key={project.title} className="swiper-item">
             <Project color={project.color}>
               <div className="left">
-                <Mockup alt="IMAC mockup" loading="eager" src="/image/mac-mockup.png" />
+                <Mockup>
+                  <Image alt="IMAC mockup" priority src="/image/mac-mockup.png" layout="fill" objectFit="cover" />
+                </Mockup>
                 <ProjectImage alt="project image" src={project.imageUrl} onClick={() => handleDetail(idx)} />
                 <div className="mac-pointer">
                   <MacPointer fill={project.color} />

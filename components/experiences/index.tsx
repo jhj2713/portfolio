@@ -8,6 +8,7 @@ import useModal from '@/hooks/useModal';
 import { experiences, IExperience } from '@/constant/data/experiences';
 import Link from 'next/link';
 import { IExperiences } from './index.type';
+import Image from 'next/image';
 
 export default function Experiences({ setPointerColor, isUnmount }: IExperiences) {
   const { modalRef, isOpenModal, openModal, closeModal } = useModal();
@@ -36,7 +37,9 @@ export default function Experiences({ setPointerColor, isUnmount }: IExperiences
           <div key={experience.title} className="swiper-item">
             <Experience color={experience.color}>
               <div className="left">
-                <Mockup alt="IMAC mockup" loading="eager" src="/image/mac-mockup.png" />
+                <Mockup>
+                  <Image alt="IMAC mockup" priority src="/image/mac-mockup.png" layout="fill" objectFit="cover" />
+                </Mockup>
                 <ProjectImage alt="project image" src={experience.imageUrl} onClick={() => handleDetail(idx)} />
                 <div className="mac-pointer">
                   <MacPointer fill={experience.color} />

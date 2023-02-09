@@ -155,13 +155,16 @@ export const Project = styled.div<{ color: string }>`
   }
 `;
 
-export const Mockup = styled.img`
-  width: 100%;
-  max-width: 32rem;
-  min-width: 24rem;
+export const Mockup = styled.div`
+  position: relative;
 
-  max-height: 26.6rem;
-  min-height: 20rem;
+  width: 32rem;
+  height: 26.2rem;
+
+  @media (max-width: 480px) {
+    width: 24rem;
+    height: 20rem;
+  }
 `;
 
 export const ProjectImage = styled.img`
