@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
     max-width: 98rem;
 
     box-sizing: border-box;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
 
     animation: modal-opening 0.5s;
   }
