@@ -51,6 +51,7 @@ export const Experience = styled.div<{ color: string }>`
 
   .right {
     margin-left: 8rem;
+    flex-grow: 1;
   }
 
   .title {

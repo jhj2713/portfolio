@@ -23,6 +23,8 @@ export const Wrapper = styled.div`
     max-width: 98rem;
 
     box-sizing: border-box;
+
+    animation: modal-opening 0.5s;
   }
 
   .contents {
@@ -53,6 +55,18 @@ export const Wrapper = styled.div`
     .contents {
       max-height: calc(100vh - 20rem);
       margin: 1.2rem 0.6rem;
+    }
+  }
+
+  @keyframes modal-opening {
+    0% {
+      transform: scale(0);
+    }
+    80% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 `;
