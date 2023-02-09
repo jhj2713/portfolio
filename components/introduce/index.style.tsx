@@ -29,6 +29,8 @@ export const Container = styled.div<{ isUnmount: ISwipeMode }>`
 
     color: ${({ theme }) => theme.gray1};
 
+    word-break: keep-all;
+
     margin-top: 3.2rem;
 
     animation: description-opening 1s 1s forwards;
@@ -67,7 +69,7 @@ export const Container = styled.div<{ isUnmount: ISwipeMode }>`
 
     .description {
       margin-top: 2rem;
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
   }
 
@@ -84,7 +86,7 @@ export const Container = styled.div<{ isUnmount: ISwipeMode }>`
 export const ProfileImage = styled.img`
   width: 50%;
   max-width: 36rem;
-  min-width: 28rem;
+  min-width: 20rem;
 
   opacity: 0;
 

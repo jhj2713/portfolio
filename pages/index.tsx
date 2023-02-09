@@ -12,7 +12,7 @@ import color from '@/styles/color.style';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import { Container, MousePointer } from './index.style';
+import { Container, MousePointer } from '@/styles/index.style';
 
 export default function Home({ id }: { id: IMenuMap }) {
   const [mousePosition, setMousePosition] = useState({ left: -100, top: -100 });
@@ -26,6 +26,7 @@ export default function Home({ id }: { id: IMenuMap }) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      if (!window.visualViewport) return;
       window.scrollTo(0, window.visualViewport.height);
       window.addEventListener('scroll', handleScrollRouting);
       clearTimeout(timer);
@@ -56,6 +57,8 @@ export default function Home({ id }: { id: IMenuMap }) {
   };
 
   const handleScrollRouting = () => {
+    if (!window.visualViewport) return;
+
     if (window.scrollY > (window.visualViewport.height * 3) / 2) {
       if (pageIndex === 5) {
         window.scrollTo(0, window.visualViewport.height);
