@@ -8,8 +8,8 @@ export const Container = styled.div<{ mode: IMode; isUnmount: ISwipeMode }>`
 
   background: ${({ mode }) =>
     mode === MODE.DARK
-      ? "url('/image/background-dark.png'), url('/image/background-light.png')"
-      : "url('/image/background-light.png')"};
+      ? "url('/image/background/background-dark.png'), url('/image/background/background-light.png')"
+      : "url('/image/background/background-light.png')"};
   background-size: cover;
   background-attachment: fixed;
 
@@ -22,7 +22,9 @@ export const Container = styled.div<{ mode: IMode; isUnmount: ISwipeMode }>`
     height: 100vh;
 
     background: ${({ mode }) =>
-      mode === MODE.DARK ? "url('/image/background-light.png')" : "url('/image/background-dark.png')"};
+      mode === MODE.DARK
+        ? "url('/image/background/background-light.png')"
+        : "url('/image/background/background-dark.png')"};
     background-size: cover;
     background-attachment: fixed;
 

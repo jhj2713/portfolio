@@ -1,7 +1,7 @@
 import { projects, IProject } from '@/constant/data/projects';
 import Tag from '../tag';
 import { Container, Mockup, ModalContents, Project, ProjectImage } from './index.style';
-import MacPointer from '@/public/image/mac-pointer.svg';
+import MacPointer from '@/public/image/swiper/mac-pointer.svg';
 import { useEffect, useState } from 'react';
 import Swiper from '../swiper';
 import Modal from '../modal';
@@ -43,7 +43,13 @@ export default function Projects({ setPointerColor, isUnmount }: IProjects) {
             <Project color={project.color}>
               <div className="left">
                 <Mockup>
-                  <Image alt="IMAC mockup" priority src="/image/mac-mockup.png" layout="fill" objectFit="cover" />
+                  <Image
+                    alt="IMAC mockup"
+                    priority
+                    src="/image/swiper/mac-mockup.png"
+                    layout="fill"
+                    objectFit="cover"
+                  />
                 </Mockup>
                 <ProjectImage alt="project image" src={project.imageUrl} onClick={() => handleDetail(idx)} />
                 <div className="mac-pointer">

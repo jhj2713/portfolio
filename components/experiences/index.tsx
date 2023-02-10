@@ -1,6 +1,6 @@
 import Tag from '../tag';
 import { Container, Mockup, ModalContents, Experience, ProjectImage } from './index.style';
-import MacPointer from '@/public/image/mac-pointer.svg';
+import MacPointer from '@/public/image/swiper/mac-pointer.svg';
 import { useEffect, useState } from 'react';
 import Swiper from '../swiper';
 import Modal from '../modal';
@@ -38,7 +38,13 @@ export default function Experiences({ setPointerColor, isUnmount }: IExperiences
             <Experience color={experience.color}>
               <div className="left">
                 <Mockup>
-                  <Image alt="IMAC mockup" priority src="/image/mac-mockup.png" layout="fill" objectFit="cover" />
+                  <Image
+                    alt="IMAC mockup"
+                    priority
+                    src="/image/swiper/mac-mockup.png"
+                    layout="fill"
+                    objectFit="cover"
+                  />
                 </Mockup>
                 <ProjectImage alt="project image" src={experience.imageUrl} onClick={() => handleDetail(idx)} />
                 <div className="mac-pointer">

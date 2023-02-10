@@ -13,10 +13,10 @@ export default function Swiper({ children, itemCount, colors, setPointerColor }:
         </div>
       </div>
       <div className="swiper-button swiper-left" onClick={swipeLeft}>
-        <SwiperImage alt="swipe left" src="/image/swiper.svg" />
+        <SwiperImage alt="swipe left" src="/image/swiper/swiper.svg" />
       </div>
       <div className="swiper-button swiper-right" onClick={swipeRight}>
-        <SwiperImage alt="swipe right" src="/image/swiper.svg" />
+        <SwiperImage alt="swipe right" src="/image/swiper/swiper.svg" />
       </div>
     </Container>
   );
