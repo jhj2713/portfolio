@@ -11,17 +11,16 @@ import { ISwipeMode, SWIPE_MODE } from '@/constant/swipe-mode';
 import color from '@/styles/color.style';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
-import { Container, MousePointer } from '@/styles/index.style';
+import { useEffect, useState } from 'react';
+import { Container } from '@/styles/index.style';
+import MousePointer from '@/components/mouse-pointer';
 
 export default function Home({ id }: { id?: IMenuMap }) {
-  const [mousePosition, setMousePosition] = useState({ left: -100, top: -100 });
   const [isToggle, setIsToggle] = useState<boolean>(false);
   const [pageIndex, setPageIndex] = useState<ISideMenu>(id ? MENU_MAP[id] : SIDE_MENU.MAIN);
   const [pointerColor, setPointerColor] = useState<string>(color.primary);
   const [isUnmount, setIsUnmount] = useState<ISwipeMode>(SWIPE_MODE.NOT_MOUNTED);
 
-  const throttle = useRef<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -36,25 +35,6 @@ export default function Home({ id }: { id?: IMenuMap }) {
 
     return () => window.removeEventListener('scroll', handleScrollRouting);
   }, [pageIndex]);
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [mousePosition]);
-
-  const handleMouseMove = (e: MouseEvent) => {
-    if (throttle.current) return;
-    else {
-      throttle.current = true;
-      const timer = setTimeout(() => {
-        setMousePosition({ left: e.clientX, top: e.clientY });
-        throttle.current = false;
-        clearTimeout(timer);
-      }, 20);
-    }
-  };
 
   const handleScrollRouting = () => {
     if (!window.visualViewport) return;
@@ -136,7 +116,7 @@ export default function Home({ id }: { id?: IMenuMap }) {
       <Container mode={handleMode()} isUnmount={isUnmount}>
         {pageRenderer()}
         {isUnmount !== SWIPE_MODE.NOT_MOUNTED ? <div className="transition-background" /> : null}
-        <MousePointer left={mousePosition.left} top={mousePosition.top} pointerColor={pointerColor} />
+        <MousePointer pointerColor={pointerColor} />
       </Container>
     </>
   );
