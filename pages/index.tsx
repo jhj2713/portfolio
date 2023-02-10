@@ -16,7 +16,6 @@ import { Container } from '@/styles/index.style';
 import MousePointer from '@/components/mouse-pointer';
 
 export default function Home({ id }: { id?: IMenuMap }) {
-  const [isToggle, setIsToggle] = useState<boolean>(false);
   const [pageIndex, setPageIndex] = useState<ISideMenu>(id ? MENU_MAP[id] : SIDE_MENU.MAIN);
   const [pointerColor, setPointerColor] = useState<string>(color.primary);
   const [isUnmount, setIsUnmount] = useState<ISwipeMode>(SWIPE_MODE.NOT_MOUNTED);
@@ -105,14 +104,7 @@ export default function Home({ id }: { id?: IMenuMap }) {
 
   return (
     <>
-      <Header
-        isToggle={isToggle}
-        setIsToggle={setIsToggle}
-        mode={handleMode()}
-        selectedMenu={pageIndex}
-        setPageIndex={setPageIndex}
-        setIsUnmount={setIsUnmount}
-      />
+      <Header mode={handleMode()} selectedMenu={pageIndex} setPageIndex={setPageIndex} setIsUnmount={setIsUnmount} />
       <Container mode={handleMode()} isUnmount={isUnmount}>
         {pageRenderer()}
         {isUnmount !== SWIPE_MODE.NOT_MOUNTED ? <div className="transition-background" /> : null}

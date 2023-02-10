@@ -17,7 +17,8 @@ const sideMenu = [
   { description: 'Contact', route: 'contact' },
 ];
 
-export default function Header({ isToggle, setIsToggle, mode, selectedMenu, setPageIndex, setIsUnmount }: IHeader) {
+export default function Header({ mode, selectedMenu, setPageIndex, setIsUnmount }: IHeader) {
+  const [isToggle, setIsToggle] = useState<boolean>(false);
   const [isFadeout, setIsFadeout] = useState<boolean>(false);
   const router = useRouter();
 

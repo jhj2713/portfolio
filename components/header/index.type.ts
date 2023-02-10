@@ -4,8 +4,6 @@ import { ISwipeMode } from '@/constant/swipe-mode';
 import { Dispatch } from 'react';
 
 export interface IHeader {
-  isToggle: boolean;
-  setIsToggle: Dispatch<boolean>;
   mode: IMode;
   selectedMenu: ISideMenu;
   setPageIndex: Dispatch<ISideMenu>;
