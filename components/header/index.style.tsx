@@ -81,7 +81,7 @@ export const SideMenu = styled.div<{ mode: IMode; isFadeout: boolean }>`
 
   z-index: 5;
 
-  background: ${({ mode }) => `url('/image/background-${mode === MODE.DARK ? 'dark' : 'light'}.png')`};
+  background: ${({ mode }) => `url('/image/background/background-${mode === MODE.DARK ? 'dark' : 'light'}.png')`};
   background-size: cover;
   background-repeat: repeat;
 

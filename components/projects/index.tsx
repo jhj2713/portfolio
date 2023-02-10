@@ -47,8 +47,8 @@ export default function Projects({ setPointerColor, isUnmount }: IProjects) {
                     alt="IMAC mockup"
                     priority
                     src="/image/swiper/mac-mockup.png"
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    sizes="(max-width: 480px) 24rem, 32rem"
                   />
                 </Mockup>
                 <ProjectImage alt="project image" src={project.imageUrl} onClick={() => handleDetail(idx)} />

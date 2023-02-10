@@ -14,7 +14,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { Container, MousePointer } from '@/styles/index.style';
 
-export default function Home({ id }: { id: IMenuMap }) {
+export default function Home({ id }: { id?: IMenuMap }) {
   const [mousePosition, setMousePosition] = useState({ left: -100, top: -100 });
   const [isToggle, setIsToggle] = useState<boolean>(false);
   const [pageIndex, setPageIndex] = useState<ISideMenu>(id ? MENU_MAP[id] : SIDE_MENU.MAIN);
@@ -142,7 +142,7 @@ export default function Home({ id }: { id: IMenuMap }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getInitialProps: GetServerSideProps = async (context) => {
   const query = context.query;
 
   if (query.id) {
