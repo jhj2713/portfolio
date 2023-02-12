@@ -44,6 +44,7 @@ export const Container = styled.div<{ isUnmount: ISwipeMode }>`
 
   .description {
     display: flex;
+    align-items: flex-start;
 
     + .description {
       margin-top: 1.6rem;

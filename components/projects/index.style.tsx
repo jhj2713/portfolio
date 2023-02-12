@@ -65,6 +65,7 @@ export const ModalContents = styled.div<{ color: string }>`
 
   .modal-text {
     display: flex;
+    align-items: flex-start;
 
     font-size: 1.8rem;
     font-weight: 300;
