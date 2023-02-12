@@ -1,7 +1,6 @@
 import { projects, IProject } from '@/constant/data/projects';
 import Tag from '../tag';
-import { Container, Mockup, ModalContents, Project, ProjectImage } from './index.style';
-import MacPointer from '@/public/image/swiper/mac-pointer.svg';
+import { Container, ModalContents } from './index.style';
 import { useEffect, useState } from 'react';
 import Swiper from '../swiper';
 import Modal from '../modal';
@@ -9,7 +8,7 @@ import useModal from '@/hooks/useModal';
 import color from '@/styles/color.style';
 import Link from 'next/link';
 import { IProjects } from './index.type';
-import Image from 'next/image';
+import SwiperItem from '../swiper-item';
 
 export default function Projects({ setPointerColor, isUnmount }: IProjects) {
   const { modalRef, isOpenModal, openModal, closeModal } = useModal();
@@ -40,58 +39,7 @@ export default function Projects({ setPointerColor, isUnmount }: IProjects) {
       <Swiper itemCount={3} colors={projects.map((p) => p.color)} setPointerColor={setPointerColor}>
         {projects.map((project, idx) => (
           <div key={project.title} className="swiper-item">
-            <Project color={project.color}>
-              <div className="left">
-                <Mockup>
-                  <Image
-                    alt="IMAC mockup"
-                    priority
-                    src="/image/swiper/mac-mockup.png"
-                    fill
-                    sizes="(max-width: 480px) 24rem, 32rem"
-                  />
-                </Mockup>
-                <ProjectImage alt="project image" src={project.imageUrl} onClick={() => handleDetail(idx)} />
-                <div className="mac-pointer">
-                  <MacPointer fill={project.color} />
-                </div>
-              </div>
-              <div className="right">
-                <div className="top">
-                  <div className="title">
-                    {project.title.split('').map((text, idx) => (
-                      <h1 key={idx}>{text}</h1>
-                    ))}
-                  </div>
-                  <p className="date">
-                    {project.dates[0]} ~ {project.dates[1]}
-                  </p>
-                </div>
-                <div className="contents">
-                  {project.description.map((des, idx) =>
-                    idx % 2 === 1 ? (
-                      <p key={idx} className="highlight">
-                        {des}
-                      </p>
-                    ) : (
-                      des
-                    )
-                  )}
-                </div>
-                <div className="tags">
-                  {project.tags.map((tag, idx) => (
-                    <div key={idx} className="tag">
-                      <Tag
-                        borderColor={project.color}
-                        backgroundColor="transparent"
-                        textColor={project.color}
-                        text={tag}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Project>
+            <SwiperItem item={project} idx={idx} handleDetail={handleDetail} />
           </div>
         ))}
       </Swiper>

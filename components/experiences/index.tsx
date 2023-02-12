@@ -1,6 +1,5 @@
 import Tag from '../tag';
-import { Container, Mockup, ModalContents, Experience, ProjectImage } from './index.style';
-import MacPointer from '@/public/image/swiper/mac-pointer.svg';
+import { Container, ModalContents } from './index.style';
 import { useEffect, useState } from 'react';
 import Swiper from '../swiper';
 import Modal from '../modal';
@@ -8,7 +7,7 @@ import useModal from '@/hooks/useModal';
 import { experiences, IExperience } from '@/constant/data/experiences';
 import Link from 'next/link';
 import { IExperiences } from './index.type';
-import Image from 'next/image';
+import SwiperItem from '../swiper-item';
 
 export default function Experiences({ setPointerColor, isUnmount }: IExperiences) {
   const { modalRef, isOpenModal, openModal, closeModal } = useModal();
@@ -35,53 +34,7 @@ export default function Experiences({ setPointerColor, isUnmount }: IExperiences
       <Swiper itemCount={2} colors={experiences.map((p) => p.color)} setPointerColor={setPointerColor}>
         {experiences.map((experience, idx) => (
           <div key={experience.title} className="swiper-item">
-            <Experience color={experience.color}>
-              <div className="left">
-                <Mockup>
-                  <Image
-                    alt="IMAC mockup"
-                    priority
-                    src="/image/swiper/mac-mockup.png"
-                    fill
-                    sizes="(max-width: 480px) 24rem, 32rem"
-                  />
-                </Mockup>
-                <ProjectImage alt="project image" src={experience.imageUrl} onClick={() => handleDetail(idx)} />
-                <div className="mac-pointer">
-                  <MacPointer fill={experience.color} />
-                </div>
-              </div>
-              <div className="right">
-                <div className="title">
-                  {experience.title.split('').map((text, idx) => (
-                    <h1 key={idx}>{text}</h1>
-                  ))}
-                </div>
-                <div className="contents">
-                  {experience.description.map((des, idx) =>
-                    idx % 2 === 1 ? (
-                      <p key={idx} className="highlight">
-                        {des}
-                      </p>
-                    ) : (
-                      des
-                    )
-                  )}
-                </div>
-                <div className="tags">
-                  {experience.tags.map((tag, idx) => (
-                    <div key={idx} className="tag">
-                      <Tag
-                        borderColor={experience.color}
-                        backgroundColor="transparent"
-                        textColor={experience.color}
-                        text={tag}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Experience>
+            <SwiperItem item={experience} idx={idx} handleDetail={handleDetail} />
           </div>
         ))}
       </Swiper>
