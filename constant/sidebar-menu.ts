@@ -1,3 +1,14 @@
+export const sideMenu = [
+  { description: 'Introduce', route: 'introduce' },
+  { description: 'Skills', route: 'skills' },
+  {
+    description: 'Projects',
+    route: 'projects',
+  },
+  { description: 'Experiences', route: 'experiences' },
+  { description: 'Contact', route: 'contact' },
+];
+
 export const SIDE_MENU = {
   MAIN: 0,
   INTRODUCE: 1,

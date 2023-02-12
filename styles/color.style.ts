@@ -11,6 +11,6 @@ const color: Theme = {
   gray7: '#525252',
   gray8: '#262626',
   gray9: '#101010',
-};
+} as const;
 
 export default color;

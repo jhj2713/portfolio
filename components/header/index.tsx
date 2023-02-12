@@ -1,21 +1,10 @@
 import { MODE } from '@/constant/display-mode';
-import { MENU_MAP, SIDE_MENU } from '@/constant/sidebar-menu';
+import { MENU_MAP, sideMenu, SIDE_MENU } from '@/constant/sidebar-menu';
 import { SWIPE_MODE } from '@/constant/swipe-mode';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Hamburger, Container, SideMenu, Menu } from './index.style';
 import { IHeader } from './index.type';
-
-const sideMenu = [
-  { description: 'Introduce', route: 'introduce' },
-  { description: 'Skills', route: 'skills' },
-  {
-    description: 'Projects',
-    route: 'projects',
-  },
-  { description: 'Experiences', route: 'experiences' },
-  { description: 'Contact', route: 'contact' },
-];
 
 export default function Header({ mode, selectedMenu, setPageIndex, setIsUnmount }: IHeader) {
   const [isToggle, setIsToggle] = useState<boolean>(false);

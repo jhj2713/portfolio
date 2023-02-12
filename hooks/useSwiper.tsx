@@ -1,3 +1,4 @@
+import color from '@/styles/color.style';
 import { Dispatch, useEffect, useRef } from 'react';
 
 export default function useSwiper(itemCount: number, colors: string[], setPointerColor: Dispatch<string>) {
@@ -60,12 +61,15 @@ export default function useSwiper(itemCount: number, colors: string[], setPointe
   };
 
   const handlePointerColor = (dest: number, width: number) => {
+    if (colors.length < 2) return color.primary;
+
     if (dest === 0) {
       return colors[0];
     } else if (dest === -width / 3) {
       return colors[1];
     }
-    return colors[2];
+
+    return colors.length === 3 ? colors[2] : colors[0];
   };
 
   const handleTouchEnd = (e: TouchEvent) => {
